@@ -8,16 +8,23 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Töröljük az előző árazási adatokat
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Érvénytelen CSRF token!");
+    }
+
     $pdo->prepare("DELETE FROM pricing WHERE provider_id = ?")->execute([$user_id]);
 
-    // Új adatok beszúrása
     $stmt = $pdo->prepare("INSERT INTO pricing (provider_id, duration, incall_price, outcall_price) VALUES (?, ?, ?, ?)");
 
     foreach ($_POST['incall_price'] as $duration => $incall_price) {
         $outcall_price = $_POST['outcall_price'][$duration];
-        if (!empty($incall_price) || !empty($outcall_price)) {
+        
+        if (is_numeric($incall_price) && is_numeric($outcall_price) && ($incall_price > 0 || $outcall_price > 0)) {
             $stmt->execute([$user_id, $duration, $incall_price, $outcall_price]);
         }
     }
@@ -26,56 +33,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 
-// Lekérdezzük a felhasználó jelenlegi árait
 $stmt = $pdo->prepare("SELECT duration, incall_price, outcall_price FROM pricing WHERE provider_id = ?");
 $stmt->execute([$user_id]);
-$pricing_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Az árakat egy tömbbe rendezzük
-$prices = [];
-foreach ($pricing_data as $row) {
-    $prices[$row['duration']] = [
-        'incall_price' => $row['incall_price'],
-        'outcall_price' => $row['outcall_price']
-    ];
-}
+$pricing = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Árak Beállítása</title>
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Árak beállítása</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
-    <div class="pricing-container">
-        <h2>Árak Beállítása</h2>
-        <form action="pricing.php" method="POST">
-            <table>
+<div class="pricing-container">
+    <h2>Árak beállítása</h2>
+    <form method="POST" action="">
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+        <table>
+            <tr>
+                <th>Időtartam</th>
+                <th>Incall Ár (€)</th>
+                <th>Outcall Ár (€)</th>
+            </tr>
+            <?php foreach ([30, 60, 90, 120] as $duration): ?>
                 <tr>
-                    <th>Időtartam</th>
-                    <th>Incall ár (CHF)</th>
-                    <th>Outcall ár (CHF)</th>
+                    <td><?php echo $duration; ?> perc</td>
+                    <td><input type="number" name="incall_price[<?php echo $duration; ?>]" min="0" step="0.01" value="<?php echo isset($pricing[$duration]['incall_price']) ? htmlspecialchars($pricing[$duration]['incall_price']) : ''; ?>"></td>
+                    <td><input type="number" name="outcall_price[<?php echo $duration; ?>]" min="0" step="0.01" value="<?php echo isset($pricing[$duration]['outcall_price']) ? htmlspecialchars($pricing[$duration]['outcall_price']) : ''; ?>"></td>
                 </tr>
-                <?php
-                for ($i = 15; $i <= 1440; $i += 15):
-                    $incall_value = isset($prices[$i]) ? $prices[$i]['incall_price'] : "";
-                    $outcall_value = isset($prices[$i]) ? $prices[$i]['outcall_price'] : "";
-                ?>
-                <tr>
-                    <td><?= floor($i / 60) . " óra " . ($i % 60) . " perc" ?></td>
-                    <td><input type="text" name="incall_price[<?= $i ?>]" value="<?= $incall_value ?>"></td>
-                    <td><input type="text" name="outcall_price[<?= $i ?>]" value="<?= $outcall_value ?>"></td>
-                </tr>
-                <?php endfor; ?>
-            </table>
-            <button type="submit">Mentés</button>
-        </form>
-    </div>
-
+            <?php endforeach; ?>
+        </table>
+        <button type="submit">Mentés</button>
+    </form>
+</div>
 </body>
 </html>

@@ -68,3 +68,67 @@
 .main-menu ul li a:hover {
     color: #32eaff;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+    background-color: #1D1D1D;
+}
+
+.logo img {
+    width: 180px;
+    height: auto;
+}
+
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-section input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ff219e;
+    background-color: #333;
+    color: white;
+}
+
+.auth-section .login-btn {
+    background-color: #ff219e;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-section .login-btn:hover {
+    background-color: #32eaff;
+}
+
+.logo img {
+    width: 150px; /* Kisebb logó */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Középre igazítás */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ff219e;
+    text-decoration: none;
+    font-weight: bold;
+}

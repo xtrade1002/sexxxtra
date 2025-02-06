@@ -1,24 +1,44 @@
 <?php
 require '../config.php';
+include 'includes/header.php';
+
+session_start();
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: admin_login.php');
+    exit();
+}
+
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_id = $_POST["user_id"];
-    $action = $_POST["action"];
-
-    if ($action == "delete") {
-        $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
-    } elseif ($action == "activate") {
-        $stmt = $pdo->prepare("UPDATE users SET subscription_status = 'active' WHERE id = ?");
-    } elseif ($action == "deactivate") {
-        $stmt = $pdo->prepare("UPDATE users SET subscription_status = 'inactive' WHERE id = ?");
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("Érvénytelen CSRF token!");
     }
     
-    $stmt->execute([$user_id]);
-    echo "Felhasználó állapota módosítva!";
+    $user_id = filter_input(INPUT_POST, 'user_id', FILTER_VALIDATE_INT);
+    $action = $_POST["action"];
+    
+    if ($user_id) {
+        if ($action == "delete") {
+            $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
+        } elseif ($action == "activate") {
+            $stmt = $pdo->prepare("UPDATE users SET subscription_status = 'active' WHERE id = ?");
+        } elseif ($action == "deactivate") {
+            $stmt = $pdo->prepare("UPDATE users SET subscription_status = 'inactive' WHERE id = ?");
+        }
+        
+        if ($stmt->execute([$user_id])) {
+            echo "Felhasználó állapota módosítva!";
+        } else {
+            echo "Hiba történt!";
+        }
+    }
 }
 
 // Felhasználók lekérése
-$stmt = $pdo->query("SELECT id, username, email, subscription_status FROM users");
+$stmt = $pdo->query("SELECT id, username, email, subscription_status FROM users ORDER BY username ASC");
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -28,39 +48,41 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Felhasználók Kezelése</title>
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-
-    <div class="admin-container">
+    <div class="admin-users-container">
         <h2>Felhasználók Kezelése</h2>
-        <table class="admin-table">
+        <form method="GET" action="">
+            <input type="text" name="search" placeholder="Keresés felhasználónév vagy email alapján">
+            <button type="submit">Keresés</button>
+        </form>
+        <table>
             <tr>
                 <th>ID</th>
-                <th>Név</th>
+                <th>Felhasználónév</th>
                 <th>Email</th>
-                <th>Előfizetés</th>
+                <th>Állapot</th>
                 <th>Műveletek</th>
             </tr>
             <?php foreach ($users as $user): ?>
             <tr>
-                <td><?= htmlspecialchars($user['id']); ?></td>
-                <td><?= htmlspecialchars($user['username']); ?></td>
-                <td><?= htmlspecialchars($user['email']); ?></td>
-                <td><?= htmlspecialchars($user['subscription_status']); ?></td>
-                <td class="admin-actions">
-                    <form action="admin_manage_users.php" method="POST">
-                        <input type="hidden" name="user_id" value="<?= $user['id']; ?>">
+                <td><?php echo htmlspecialchars($user['id']); ?></td>
+                <td><?php echo htmlspecialchars($user['username']); ?></td>
+                <td><?php echo htmlspecialchars($user['email']); ?></td>
+                <td><?php echo htmlspecialchars($user['subscription_status']); ?></td>
+                <td>
+                    <form method="POST" action="">
+                        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                        <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
                         <button type="submit" name="action" value="activate">Aktiválás</button>
-                        <button type="submit" name="action" value="deactivate">Inaktiválás</button>
-                        <button type="submit" name="action" value="delete" onclick="return confirm('Biztos törlöd ezt a felhasználót?')">Törlés</button>
+                        <button type="submit" name="action" value="deactivate">Deaktiválás</button>
+                        <button type="submit" name="action" value="delete">Törlés</button>
                     </form>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
     </div>
-
 </body>
 </html>

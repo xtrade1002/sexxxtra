@@ -28,34 +28,30 @@ button:hover {
     color: red;
 }
 
-
 /***************** Logó *******************/
 .logo {
     display: flex;
     align-items: center;
     justify-content: flex-start; /* Balra igazítás */
-    height: 50px; /* Megfelelő méret a felső sávhoz */
-    margin-left: 20px; /* Kis térköz a bal szélétől */
+    height: 50px;
+    margin-left: 20px;
     margin-top: 20px;
 }
 
 .logo img {
-    height: 80px; /* Logó magassága */
-    width: auto; /* Automatikus szélesség */
+    height: 80px;
+    width: auto;
 }
 
-
-
-/* Profilok grid elrendezése */
+/* 🔹 Profilok grid elrendezése */
 .profile-grid {
-    display: flex;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(5, 1fr); /* 5 oszlop egy sorban */
-    gap: 10px; /* Kisebb távolság a profilok között */
-    justify-content: center; /* Középre igazítás */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Reszponzív oszlopok */
+    gap: 10px;
+    justify-content: center;
 }
 
-/* Profilkártyák stílusa */
+/* 🔹 Profilkártyák stílusa */
 .profile-card {
     background-color: #333;
     padding: 10px;
@@ -66,7 +62,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 180px; /* Állítsd be a kívánt méretet */
+    width: 100%;
+    max-width: 180px;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -74,24 +71,21 @@ button:hover {
     transform: scale(1.05);
 }
 
-
 /********** Menü alatti profilok ***********/
 .featured-images {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Középre igazítás */
+    justify-content: center;
     align-items: center;
-    gap: 10px; /* Nincs térköz */
+    gap: 10px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 1200px; /* A képernyő méretétől függően szabályozza */
+    max-width: 1200px;
 }
 
 .featured-images img {
-    width: 85px; /* Kisebb méret */
+    width: 85px;
     height: auto;
     border-radius: 5px;
 }
-
-

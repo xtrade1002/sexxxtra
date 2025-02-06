@@ -124,3 +124,140 @@ body {
     width: 200px;
     margin: 0 auto 20px auto;
 }
+
+/* 🔹 Header és navigáció */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1D1D1D;
+    padding: 15px 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.main-menu ul li a {
+    color: #ff219e;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.auth-section {
+    display: flex;
+    gap: 10px;
+}
+
+.register-btn, .login-btn, .logout-btn, .user-profile {
+    padding: 8px 12px;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.register-btn {
+    background-color: #ff219e;
+}
+
+.login-btn {
+    background-color: #32eaff;
+}
+
+.logout-btn {
+    background-color: red;
+}
+
+/* 🔹 Footer */
+footer {
+    background-color: #1D1D1D;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-menu li a {
+    color: #ff219e;
+    text-decoration: none;
+}
+
+.footer-menu li a:hover {
+    color: #32eaff;
+}
+
+/* 🔹 A teljes oldal középre helyezése */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 🔹 A regisztrációs doboz stílusa */
+.auth-box {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 33, 158, 0.5);
+    overflow: hidden;
+}
+
+/* 🔹 A kép bal oldalon */
+.auth-box .image-container {
+    width: 50%;
+    height: 100%;
+    background: url('../pictures/women.webp') no-repeat center;
+    background-size: cover;
+}
+
+/* 🔹 A formázási mezők */
+.auth-box .form-container {
+    width: 50%;
+    padding: 30px;
+    text-align: center;
+}
+
+/* 🔹 Input mezők */
+.auth-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ff219e;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+/* 🔹 Regisztrációs gomb */
+.auth-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff219e;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.auth-box button:hover {
+    background-color: #32eaff;
+}

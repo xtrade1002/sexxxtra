@@ -1,22 +1,75 @@
 /* 🔹 Szűrőpanel konténer */
-.sidebar {
-    width: 250px;
-    background-color: #292929;
-    padding: 15px;
+.search-container {
+    position: absolute !important;
+    left: 10px; /* Balra igazítás */
+    top: 250px; /* Fejléc alá igazítás */
+    width: 150px; /* Kisebb szélesség */
+    max-width: 300px;
+    background-color: #353535; /* Háttérszín */
+    padding: 15px 20px 15px 20px;
+    margin-left: 30px;
+    border-radius: 5px;
+    z-index: 1000; /* Biztosítja, hogy ne takarja el más elem */
+    transition: all 0.3s ease-in-out; /* Animációs hatás */
+}
+
+
+/* 🔹 Szűrőpanel lenyíló animáció */
+.sidebar.collapsed {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 /* 🔹 Szűrőmezők (pl. város, szemszín, testalkat) */
-.sidebar input, .sidebar select {
+.sidebar input, 
+.sidebar select {
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
+    margin-top: 30px;
+    margin-left: 20px;
     background-color: #333;
     border: 1px solid #ff219e;
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 5px;
 }
 
+.sidebar form {
+    display: flex;
+    justify-content: center; /* Középre igazítás */
+    align-items: center;
+    flex-direction: column; /* Függőleges elrendezés */
+}
+
 /* 🔹 Keresés gomb */
-.sidebar button {
-    width: 100%;
+.sidebar .search-btn,
+.sidebar .btn {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: auto;
+    min-width: 120px;
+    background-color: #ff219e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+.sidebar button:hover {
+    background-color: #32eaff; /* Hover szín */
+}
+
+/* 🔹 Reszponzivitás mobilnézethez */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Mobilnézetben teljes szélesség */
+        left: 0;
+        top: 150px; /* Kicsit lejjebb mobilon */
+        max-width: none;
+    }
 }
