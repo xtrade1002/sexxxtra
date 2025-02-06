@@ -1,0 +1,48 @@
+/* 🔹 Profil oldal konténer */
+.profile-container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* 🔹 Oldalsó menü */
+.sidebar {
+    width: 250px;
+    background-color: #1D1D1D;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* 🔹 Oldalsó menü lista */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* 🔹 Oldalsó menü elemek */
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+/* 🔹 Oldalsó menü linkek */
+.sidebar ul li a {
+    color: #ff219e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 🔹 Oldalsó menü linkek hover effekt */
+.sidebar ul li a:hover {
+    color: #32eaff;
+}
+
+/* 🔹 Profil oldal fő tartalma */
+.profile-content {
+    flex-grow: 1;
+    background-color: #292929;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}

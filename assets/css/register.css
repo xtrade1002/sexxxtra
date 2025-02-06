@@ -1,0 +1,126 @@
+/* 🔹 Alapbeállítások */
+body {
+    background-color: #1D1D1D;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* 🔹 Regisztráció és bejelentkezés közös konténere */
+.auth-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #1D1D1D;
+    color: #ff219e;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 🔹 Regisztráció és bejelentkezés fődoboz */
+.auth-box {
+    display: flex;
+    align-items: center;
+    width: 800px; /* Képernyő fele legyen */
+    background-color: rgba(0, 0, 0, 0.85); /* Átlátszó fekete háttér */
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 33, 158, 0.5);
+    overflow: hidden;
+}
+
+/* 🔹 A kép elhelyezése */
+.auth-box .image-container {
+    width: 50%; /* A div fele */
+    height: 100%;
+    background: url('../pictures/women.webp') no-repeat center;
+    background-size: cover;
+}
+
+/* 🔹 A regisztrációs/bejelentkezési mezők */
+.auth-box .form-container {
+    width: 50%;
+    padding: 30px;
+    text-align: center;
+}
+
+/* 🔹 Input mezők */
+.auth-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #222;
+    border: 1px solid #ff219e;
+    color: white;
+    border-radius: 5px;
+}
+
+.auth-box label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+}
+
+
+/* 🔹 Placeholder szín */
+.auth-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* 🔹 Regisztrációs gomb */
+.auth-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff219e;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.auth-box button:hover {
+    background-color: #32eaff;
+}
+
+/* 🔹 "Elfelejtetted a jelszavad?" link */
+.auth-box a {
+    display: block;
+    margin-top: 10px;
+    color: #ff219e;
+    text-decoration: none;
+}
+
+.auth-box a:hover {
+    color: #32eaff;
+}
+
+/* 🔹 ÁSZF checkbox és szövege */
+.register-container label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+}
+
+.register-container a {
+    color: #32eaff;
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+/* 🔹 Logó */
+.logo img {
+    display: block;
+    width: 200px;
+    margin: 0 auto 20px auto;
+}

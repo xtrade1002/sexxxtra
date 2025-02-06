@@ -1,0 +1,70 @@
+/* 🔹 Felső sáv (Bejelentkezés & Regisztráció) */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 10px 20px;
+}
+
+/* 🔹 Bejelentkezési és regisztrációs gombok */
+.auth-section {
+    display: flex;
+    align-items: center;
+}
+
+/* 🔹 Regisztráció gomb */
+.register-btn {
+    border: 2px solid #ff219e;
+    padding: 8px 12px;
+    color: #ff219e;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+/* 🔹 Bejelentkezési mezők */
+.login-input {
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+/* 🔹 Bejelentkezés gomb */
+.login-btn {
+    background-color: #ff219e;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+}
+
+/* 🔹 Főmenü */
+.main-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1D1D1D;
+    padding: 10px 20px;
+    position: relative;
+}
+
+/* 🔹 Menü elemek */
+.main-menu ul {
+    list-style: none;
+    display: flex;
+}
+
+/* 🔹 Menü elemek távolsága */
+.main-menu ul li {
+    margin-right: 15px;
+}
+
+/* 🔹 Menü linkek */
+.main-menu ul li a {
+    color: #ff219e;
+    text-decoration: none;
+}
+
+/* 🔹 Menü linkek hover effekt */
+.main-menu ul li a:hover {
+    color: #32eaff;
+}

@@ -1,0 +1,22 @@
+/* 🔹 Szűrőpanel konténer */
+.sidebar {
+    width: 250px;
+    background-color: #292929;
+    padding: 15px;
+}
+
+/* 🔹 Szűrőmezők (pl. város, szemszín, testalkat) */
+.sidebar input, .sidebar select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #333;
+    border: 1px solid #ff219e;
+    color: white;
+    border-radius: 5px;
+}
+
+/* 🔹 Keresés gomb */
+.sidebar button {
+    width: 100%;
+}

@@ -1,0 +1,97 @@
+/* 🔹 Teljes oldal háttér és betűstílus */
+body {
+    background-color: #1D1D1D;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 🔹 Általános gombstílusok */
+button {
+    padding: 10px;
+    background-color: #ff219e;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* 🔹 Gomb hover effekt */
+button:hover {
+    background-color: #32eaff;
+}
+
+/* 🔹 Hibaüzenetek */
+.error {
+    color: red;
+}
+
+
+/***************** Logó *******************/
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Balra igazítás */
+    height: 50px; /* Megfelelő méret a felső sávhoz */
+    margin-left: 20px; /* Kis térköz a bal szélétől */
+    margin-top: 20px;
+}
+
+.logo img {
+    height: 80px; /* Logó magassága */
+    width: auto; /* Automatikus szélesség */
+}
+
+
+
+/* Profilok grid elrendezése */
+.profile-grid {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(5, 1fr); /* 5 oszlop egy sorban */
+    gap: 10px; /* Kisebb távolság a profilok között */
+    justify-content: center; /* Középre igazítás */
+}
+
+/* Profilkártyák stílusa */
+.profile-card {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px; /* Állítsd be a kívánt méretet */
+    transition: transform 0.2s ease-in-out;
+}
+
+.profile-card:hover {
+    transform: scale(1.05);
+}
+
+
+/********** Menü alatti profilok ***********/
+.featured-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Középre igazítás */
+    align-items: center;
+    gap: 10px; /* Nincs térköz */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1200px; /* A képernyő méretétől függően szabályozza */
+}
+
+.featured-images img {
+    width: 85px; /* Kisebb méret */
+    height: auto;
+    border-radius: 5px;
+}
+
+

@@ -1,0 +1,33 @@
+/* 🔹 Admin panel fő konténer */
+.admin-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background-color: #1D1D1D;
+    color: #ff219e;
+    border-radius: 10px;
+}
+
+/* 🔹 Admin táblázat */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* 🔹 Admin táblázat fejlécek */
+.admin-table th, .admin-table td {
+    padding: 10px;
+    border: 1px solid #32eaff;
+}
+
+/* 🔹 Admin táblázat fejlécek háttérszíne */
+.admin-table th {
+    background-color: #292929;
+    color: #32eaff;
+}
+
+/* 🔹 Admin műveletek (pl. törlés, szerkesztés) */
+.admin-actions button {
+    padding: 5px 10px;
+    margin-right: 5px;
+}
