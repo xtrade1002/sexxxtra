@@ -1,19 +1,25 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexxxtra</title>
+
+    <!-- CSS Fájlok -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css"> 
+</head>
 <header class="top-header">
     <div class="logo">
         <img src="assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
     </div>
     <div class="auth-section">
-        <?php if(isset($_SESSION['user_id'])): ?>
-            <span class="welcome-msg">Üdv, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
-            <a href="logout.php" class="logout-btn">Kijelentkezés</a>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="pages/auth/logout.php" class="logout-btn">Kijelentkezés</a>
         <?php else: ?>
-            <a href="register.php" class="register-btn">REGISZTRÁCIÓ</a>
-            <input type="text" placeholder="Felhasználónév" name="username" class="login-input">
-            <input type="password" placeholder="••••••" name="password" class="login-input">
-            <button class="login-btn">BELÉPÉS</button>
+            <a href="pages/auth/login.php" class="login-btn" onclick="toggleForgotPassword()">Bejelentkezés</a>
+            <a href="pages/auth/register.php" class="register-btn">Regisztráció</a>
+            
         <?php endif; ?>
     </div>
-    <a href="forgot_password.php">Elfelejtetted a jelszavad?</a>
     <div class="language-selector">
         <select>
             <option value="hu">🇭🇺 Magyar</option>

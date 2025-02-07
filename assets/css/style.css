@@ -28,21 +28,6 @@ button:hover {
     color: red;
 }
 
-/***************** Logó *******************/
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Balra igazítás */
-    height: 50px;
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-.logo img {
-    height: 80px;
-    width: auto;
-}
-
 /* 🔹 Profilok grid elrendezése */
 .profile-grid {
     display: grid;

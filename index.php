@@ -43,7 +43,7 @@ $total_pages = ceil($total_profiles / $profiles_per_page);
                 <img src="<?php echo !empty($profile['profile_picture']) ? htmlspecialchars($profile['profile_picture']) : 'assets/pictures/default.jpg'; ?>" alt="Profilkép">
                 <h3><?php echo htmlspecialchars($profile['username']); ?></h3>
                 <p><?php echo htmlspecialchars($profile['location'] ?? 'Nincs megadva'); ?>, <?php echo htmlspecialchars($profile['age'] ?? 'Életkor nincs megadva'); ?> éves</p>
-                <a href="profile.php?id=<?php echo $profile['id']; ?>" class="profile-btn">Megnézem</a>
+                <a href="pages/profile/profile_view.php?id=<?php echo urlencode($profile['id']); ?>" class="profile-btn">Megnézem</a>
             </div>
         <?php endforeach; ?>
     </div>

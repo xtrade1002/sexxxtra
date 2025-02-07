@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require __DIR__ . '/../../config.php';
 session_start();
 session_regenerate_id(true);
 
@@ -14,25 +14,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
-    $remember = isset($_POST["remember"]);
+    $confirm_password = trim($_POST["confirm_password"]);
+    $terms = isset($_POST["terms"]);
 
-    $stmt = $pdo->prepare("SELECT id, password FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
-
-    if ($user && password_verify($password, $user["password"])) {
-        $_SESSION["user_id"] = $user["id"];
-        setcookie("user_session", session_id(), ["httponly" => true, "secure" => true, "samesite" => "Strict"]);
-        
-        if ($remember) {
-            setcookie("remember_me", $email, time() + (86400 * 30), "/", "", true, true);
-        }
-        
-        header("Location: profile.php");
-        exit();
-    } else {
-        $error = "Hibás bejelentkezési adatok!";
+    if (!$terms) {
+        die("Az ÁSZF elfogadása kötelező!");
     }
+
+    if ($password !== $confirm_password) {
+        die("A jelszavak nem egyeznek!");
+    }
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $stmt = $pdo->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
+    $stmt->execute([$email, $hashed_password]);
+    
+    // Email küldése
+    $subject = "Sikeres regisztráció";
+    $message = "Kedves felhasználó!\n\nSikeresen regisztráltál az oldalunkra.\n\nÜdvözlettel,\nA Sexxxtra Csapat";
+    $headers = "From: no-reply@sexxxtra.com";
+    mail($email, $subject, $message, $headers);
+    
+    header("Location: login.php?success=1");
+    exit();
 }
 ?>
 
@@ -41,24 +45,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bejelentkezés</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Regisztráció</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/register.css">
 </head>
 <body>
 <div class="auth-container">
     <div class="auth-box">
-        <h2>Bejelentkezés</h2>
-        <?php if (isset($error)): ?>
-            <p class="error-msg"><?php echo htmlspecialchars($error); ?></p>
-        <?php endif; ?>
-        <form method="POST" action="">
-            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Jelszó" required>
-            <label><input type="checkbox" name="remember"> Emlékezz rám</label>
-            <button type="submit">Belépés</button>
-        </form>
-        <a href="forgot_password.php">Elfelejtetted a jelszavad?</a>
+        <div class="image-container"></div>
+        <div class="form-container">
+            <div class="logo">
+                <img src="../../assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
+            </div>
+            <h2 class="register-text">Regisztráció</h2>
+            <form method="POST" action="">
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Jelszó" required>
+                <input type="password" name="confirm_password" placeholder="Jelszó újra" required>
+                <label><input type="checkbox" name="terms" required> Elfogadom az <a href="#">ÁSZF-et</a></label>
+                <button type="submit">Regisztráció</button>
+            </form>
+            <a href="pages/auth/login.php">Már van fiókod? Jelentkezz be!</a>
+        </div>
     </div>
 </div>
 </body>

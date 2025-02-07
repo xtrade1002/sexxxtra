@@ -7,128 +7,36 @@
     padding: 10px 20px;
 }
 
-/* 🔹 Bejelentkezési és regisztrációs gombok */
-.auth-section {
-    display: flex;
-    align-items: center;
-}
-
-/* 🔹 Regisztráció gomb */
-.register-btn {
-    border: 2px solid #ff219e;
-    padding: 8px 12px;
-    color: #ff219e;
-    text-decoration: none;
-    margin-right: 10px;
-}
-
-/* 🔹 Bejelentkezési mezők */
-.login-input {
-    padding: 5px;
-    margin-right: 5px;
-    border-radius: 5px;
-}
-
-/* 🔹 Bejelentkezés gomb */
-.login-btn {
-    background-color: #ff219e;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-}
-
-/* 🔹 Főmenü */
-.main-menu {
+/* 🔹 Logó középre igazítása és nagyobb méret */
+.logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1D1D1D;
-    padding: 10px 20px;
-    position: relative;
-}
-
-/* 🔹 Menü elemek */
-.main-menu ul {
-    list-style: none;
-    display: flex;
-}
-
-/* 🔹 Menü elemek távolsága */
-.main-menu ul li {
-    margin-right: 15px;
-}
-
-/* 🔹 Menü linkek */
-.main-menu ul li a {
-    color: #ff219e;
-    text-decoration: none;
-}
-
-/* 🔹 Menü linkek hover effekt */
-.main-menu ul li a:hover {
-    color: #32eaff;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 50px;
-    background-color: #1D1D1D;
+    width: 100%;
 }
 
 .logo img {
-    width: 180px;
-    height: auto;
+    height: 250px;
+    width: auto;
 }
 
+/* 🔹 Bejelentkezési és regisztrációs gombok jobbra */
 .auth-section {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: auto;
 }
 
-.auth-section input {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ff219e;
-    background-color: #333;
-    color: white;
-}
-
-.auth-section .login-btn {
-    background-color: #ff219e;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.auth-section .login-btn:hover {
-    background-color: #32eaff;
-}
-
-.logo img {
-    width: 150px; /* Kisebb logó */
-    height: auto;
-    display: block;
-    margin: 0 auto; /* Középre igazítás */
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #ff219e;
+.auth-section a {
     text-decoration: none;
-    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: #ff219e;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.auth-section a:hover {
+    background-color: #32eaff;
 }

@@ -1,4 +1,3 @@
-/* 🔹 Alapbeállítások */
 body {
     background-color: #1D1D1D;
     height: 100vh;
@@ -9,7 +8,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 🔹 Fő doboz */
+/* 🔹 A bejelentkezési oldal formázása ugyanúgy, mint a regisztrációs oldal */
 .auth-box {
     display: flex;
     align-items: center;
@@ -22,8 +21,6 @@ body {
     overflow: hidden;
 }
 
-
-
 /* 🔹 Regisztrációs oldal konténere */
 .auth-container {
     display: flex;
@@ -32,17 +29,15 @@ body {
     height: 100vh;
 }
 
-
-/* 🔹 Bal oldali kép */
+/* 🔹 A kép bal oldalon */
 .auth-box .image-container {
-        width: 70%;
-        height: 100%;
-        background: url('../pictures/women.webp') no-repeat center;
-        background-size: cover;
-    }
+    width: 70%;
+    height: 100%;
+    background: url('../pictures/women.webp') no-repeat center;
+    background-size: cover;
+}
 
-
-/* 🔹 Jobb oldali form rész */
+/* 🔹 Jobb oldali form-container */
 .auth-box .form-container {
     width: 40%;
     height: 100%;
@@ -52,22 +47,21 @@ body {
     background-color: #121212; /* Sötétkék/szürke háttér */
 }
 
-
-/* 🔹 Logó */
+/* 🔹 Logó méret beállítása */
 .form-container .logo {
     width: 180px;
     margin-bottom: 20px;
 }
 
 
-/*regisztráció szövegszín*/
-.register-text{
+/*login szövegszín*/
+.login-text{
     color:  #32eaff;;
     text-align: left;
     font-size: 30px;
 }
 
-/* 🔹 A mezők egységesítése és háttérszín */
+/* 🔹 Input mezők */
 .auth-box input {
     width: 100%;
     padding: 12px;
@@ -80,52 +74,7 @@ body {
     outline: none;
 }
 
-
-/* 🔹 Az email és az első jelszó mező háttérszínének egységesítése */
-.auth-box input[type="email"],
-.auth-box input[type="password"] {
-    background-color: transparent !important; /* Ugyanolyan háttér, mint a 'Jelszó újra' mező */
-    border: none;
-    border-bottom: 2px solid #ff219e;
-    color: white;
-    font-size: 16px;
-    outline: none;
-}
-
-
-/* 🔹 Placeholder szín */
-.auth-box input::placeholder {
-    color: rgba(255, 255, 255, 0.562);
-}
-
-/* 🔹 Checkbox */
-.auth-box label {
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    color: white;
-    margin-top: 10px;
-}
-
-/* 🔹 Regisztrációs gomb */
-.auth-box button {
-    width: 100%;
-    padding: 12px;
-    background-color: #ff219e;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-    margin-top: 10px;
-}
-
-.auth-box button:hover {
-    background-color: #32eaff;
-}
-
-/* 🔹 Linkek */
+/* 🔹 Elfelejtett jelszó link */
 .auth-box a {
     display: block;
     margin-top: 10px;
@@ -137,15 +86,36 @@ body {
     color: #32eaff;
 }
 
-.image-container {
-    width: 50%; /* Bal oldalon a kép */
-    height: 100%;
-    background: url('../pictures/women.webp') no-repeat center;
-    background-size: cover;
+/* 🔹 Emlékezz rám checkbox és szöveg */
+.remember-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 10px;
 }
 
+.remember-container input {
+    margin-right: 10px;
+}
 
-/* 🔹 Az űrlap a jobb oldalon legyen */
+/* 🔹 Bejelentkezési gomb */
+.auth-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff219e;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.auth-box button:hover {
+    background-color: #32eaff;
+}
+
+/* 🔹 Logó */
 .form-container .logo img {
     display: block;
     width: 150px;
@@ -153,11 +123,3 @@ body {
 }
 
 
-/* 🔹 A checkbox és az ÁSZF egy sorban legyen */
-.terms-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 14px;
-}

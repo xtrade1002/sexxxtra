@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kereső</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+
     <style>
         body { background-color: #1D1D1D; color: white; font-family: Arial, sans-serif; }
         .search-container { width: 250px; position: fixed; left: 0; top: 50px; background: #ff219e; padding: 15px; }
