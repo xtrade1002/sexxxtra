@@ -52,17 +52,17 @@ if ($table_check) {
                 <img id="main-profile-image" src="<?php echo htmlspecialchars($profile['profile_picture'] ?? '../../assets/pictures/default.jpg'); ?>" alt="Profilkép">
             </div>
             <div class="thumbnail-container">
-        <?php
-        $imageCount = 0;
-        foreach ($images as $image):
-            if ($imageCount < 6): ?>
-                <img src="<?php echo htmlspecialchars($image['image_path']); ?>" alt="Profilkép" onclick="changeMainImage(this.src)">
-        <?php 
-            $imageCount++;
-            endif;
-        endforeach;
-        ?>
-    </div>
+                <?php
+                $imageCount = 0;
+                foreach ($images as $image):
+                    if ($imageCount < 6): ?>
+                        <img src="<?php echo htmlspecialchars($image['image_path']); ?>" alt="Profilkép" onclick="changeMainImage(this.src)">
+                <?php 
+                    $imageCount++;
+                    endif;
+                endforeach;
+                ?>
+            </div>
 
         <?php if (count($images) > 6): ?>
             <button class="show-more">Mutasd a többit</button>

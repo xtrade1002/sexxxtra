@@ -16,11 +16,5 @@
         <?php endif; ?>
     </div>
     <a href="forgot_password.php">Elfelejtetted a jelszavad?</a>
-    <div class="language-selector">
-        <select>
-            <option value="hu">🇭🇺 Magyar</option>
-            <option value="en">🇬🇧 English</option>
-            <option value="de">🇩🇪 Deutsch</option>
-        </select>
-    </div>
+
 </header>

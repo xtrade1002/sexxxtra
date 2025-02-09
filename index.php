@@ -1,9 +1,6 @@
 <?php
 require_once 'includes/header.php';
 require_once 'pages/search/search.php';
-require_once 'pages/auth/login.php';
-require_once 'pages/auth/logut.php';
-require_once 'pages/auth/register.php';
 require_once 'config.php';
 
 // Lapozáshoz szükséges változók

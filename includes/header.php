@@ -9,14 +9,14 @@
 </head>
 <header class="top-header">
     <div class="logo">
-        <img src="../assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
+        <img src="assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
     </div>
     <div class="auth-section">
         <?php if (isset($_SESSION['user_id'])): ?>
             <a href="pages/auth/logout.php" class="logout-btn">Kijelentkezés</a>
         <?php else: ?>
-            <a href="pages/auth/login.php" class="login-btn" onclick="toggleForgotPassword()">Bejelentkezés</a>
-            <a href="pages/auth/register.php" class="register-btn">Regisztráció</a>
+            <a href="../auth/login.php" class="login-btn" onclick="toggleForgotPassword()">Bejelentkezés</a>
+            <a href="../auth/register.php" class="register-btn">Regisztráció</a>
             
         <?php endif; ?>
     </div>
