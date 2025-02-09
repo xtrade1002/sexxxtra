@@ -1,0 +1,123 @@
+/* Alapbeállítások */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Dashboard elrendezés */
+.dashboard-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Oldalsó hirdetések */
+.banners {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.banner-ad {
+    background-color: #232323;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Bal oldali menü */
+.sidebar {
+    width: 200px;
+    background-color: #232323;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Menü elemek */
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-toggle {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a1a1a;
+    color: #32eaff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: 800;
+}
+
+.menu-toggle:hover {
+    color:#ff219e !important;
+}
+
+/* Almenü */
+.submenu {
+    display: none;
+    padding-left: 15px;
+}
+
+.submenu a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.submenu a:hover {
+    color: #ff219e;
+}
+
+/* Aktív menü megjelenítés */
+.submenu.active {
+    display: block;
+}
+
+/* Dashboard tartalom */
+.dashboard-content {
+    flex-grow: 1;
+    background-color: #1D1D1D;
+    padding: 20px;
+    margin: 0 15px;
+    border-radius: 10px;
+}
+
+/* Felső fejléc */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #232323;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Értesítési ikon */
+.notifications {
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.notifications i {
+    color: #ff219e;
+}
+
+.notifications i:hover {
+    color: #32eaff;
+}

@@ -11,7 +11,7 @@
     padding: 0px 20px;
     background-color: black;
     position: relative;
-    height: 100px;
+    height: 250px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     margin-bottom: 30px;
 }
@@ -24,6 +24,7 @@
     align-items: center;
     flex-grow: 1; /* Rugalmas méretezés */
     text-align: center;
+    margin-top: 70px;
 }
 
 .logo img {
@@ -36,12 +37,29 @@
     display: block;
 }
 
-/* 🔹 Bejelentkezési és regisztrációs gombok jobbra */
-.auth-section {
+.auth-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-left: auto;
+}
+
+/* 🔹 Bejelentkezési és regisztrációs gombok jobbra */
+.auth-section {
+    position: absolute;  /* Fixálás az oldal tetejéhez */
+    top: 20px;           /* 20px távolság a tetejétől */
+    right: 150px;         /* Jobbra igazítás */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;  /* Az oldal tetejéhez rögzítés */
+    top: 20px;
+    right: 20px;
+    gap: 15px; /* Távolság a két elem között */
 }
 
 .auth-section a {
@@ -59,14 +77,15 @@
 
 /* 🔹 Nyelvválasztó dropdown */
 .language-dropdown {
-    width: auto; /* Automatikusan igazodik a zászlók szélességéhez */
-    min-width: 50px; /* Biztosítja, hogy ne legyen túl keskeny */
-    padding: 5px 0px; /* Kisebb belső margó */
-    margin-right: 50px;
-    margin-left: 20px;
-    border-radius: 5px; /* Lekerekített sarkok */
-    text-align: center; /* Szövegek és elemek középre igazítása */
+    min-width: 50px;
+    padding: 5px 0px;
+    margin-right: 20px;
+    border-radius: 5px;
+    text-align: center;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 🔹 Nyelvválasztó gomb */

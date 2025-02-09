@@ -5,35 +5,39 @@
 
     <!-- CSS Fájlok -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/header.css"> 
+    <link rel="stylesheet" href="/sexxxtra/assets/css/header.css">
+
 </head>
 <header class="top-header">
     <div class="logo">
-        <img src="assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
+        <img src="/sexxxtra/assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
     </div>
-    <div class="auth-section">
-        <?php if (isset($_SESSION['user_id'])): ?>
-            <a href="pages/auth/logout.php" class="logout-btn">Kijelentkezés</a>
-        <?php else: ?>
-            <a href="../auth/login.php" class="login-btn" onclick="toggleForgotPassword()">Bejelentkezés</a>
-            <a href="../auth/register.php" class="register-btn">Regisztráció</a>
-            
-        <?php endif; ?>
-    </div>
+    <div class="auth-container">
+        <div class="auth-section">
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="pages/auth/logout.php" class="logout-btn">Kijelentkezés</a>
+            <?php else: ?>
+                <a href="../auth/login.php" class="login-btn" onclick="toggleForgotPassword()">Bejelentkezés</a>
+                <a href="../auth/register.php" class="register-btn">Regisztráció</a>
+                
+            <?php endif; ?>
+        </div>
+    
     <div class="language-dropdown">
     <button id="selected-language">
-        <img src="assets/pictures/flag_hu.png" alt="Magyar">
+        <img src="/sexxxtra/assets/pictures/flag_hu.png" alt="Magyar">
     </button>
     <div class="dropdown-content" id="dropdown-menu"> <!-- ID hozzáadva -->
-        <img src="assets/pictures/flag_hu.png" alt="Magyar" data-lang="hu">
-        <img src="assets/pictures/flag_us.png" alt="English" data-lang="en">
-        <img src="assets/pictures/flag_de.png" alt="Deutsch" data-lang="de">
-        <img src="assets/pictures/flag_fr.png" alt="Français" data-lang="fr">
-        <img src="assets/pictures/flag_it.png" alt="Italiano" data-lang="it">
-        <img src="assets/pictures/flag_ru.png" alt="Русский" data-lang="ru">
-        <img src="assets/pictures/flag_ro.png" alt="Română" data-lang="ro">
-        <img src="assets/pictures/flag_sk.png" alt="Slovenčina" data-lang="sk">
+        <img src="/sexxxtra/assets/pictures/flag_hu.png" alt="Magyar" data-lang="hu">
+        <img src="/sexxxtra/assets/pictures/flag_us.png" alt="English" data-lang="en">
+        <img src="/sexxxtra/assets/pictures/flag_de.png" alt="Deutsch" data-lang="de">
+        <img src="/sexxxtra/assets/pictures/flag_fr.png" alt="Français" data-lang="fr">
+        <img src="/sexxxtra/assets/pictures/flag_it.png" alt="Italiano" data-lang="it">
+        <img src="/sexxxtra/assets/pictures/flag_ru.png" alt="Русский" data-lang="ru">
+        <img src="/sexxxtra/assets/pictures/flag_ro.png" alt="Română" data-lang="ro">
+        <img src="/sexxxtra/assets/pictures/flag_sk.png" alt="Slovenčina" data-lang="sk">
     </div>
+</div>
 </div>
  
 
