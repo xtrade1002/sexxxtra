@@ -1,15 +1,19 @@
-footer {
+/* 🔹 Footer Alapbeállítások */
+.site-footer {
     background-color: #1D1D1D;
-    padding: 20px 0;
+    padding: 25px 0;
     text-align: center;
+    border-top: 2px solid #ff219e;
 }
 
-.footer-menu {
+/* 🔹 Footer menü */
+.footer-menu ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .footer-menu li {
@@ -20,8 +24,68 @@ footer {
     color: #ff219e;
     text-decoration: none;
     font-size: 14px;
+    transition: color 0.3s ease-in-out;
 }
 
 .footer-menu a:hover {
     color: #32eaff;
+}
+
+/* 🔹 Közösségi ikonok */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    color: #ff219e;
+    transform: scale(1.2);
+}
+
+/* 🔹 Copyright szöveg */
+.footer-copyright {
+    margin-top: 15px;
+    font-size: 12px;
+    opacity: 0.8;
+    color: white;
+}
+
+/* 🔹 Nyelvválasztó */
+.footer-language {
+    margin-top: 10px;
+}
+
+.footer-language select {
+    background-color: #1D1D1D;
+    color: white;
+    border: 1px solid #ff219e;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.footer-language select:hover {
+    border-color: #32eaff;
+}
+
+/* 🔹 Reszponzivitás: Mobil optimalizálás */
+@media (max-width: 768px) {
+    .footer-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer-social {
+        margin-top: 10px;
+    }
 }

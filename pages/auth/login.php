@@ -13,6 +13,8 @@
     <div class="auth-box">
         <div class="image-container"></div>
         <div class="form-container">
+        <div class="close-btn" onclick="window.location.href='../../index.php'">&times;</div>
+
             <img src="../../assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo" class="logo">
             <h2 class="login-text">Bejelentkezés</h2>
             <?php if (isset($error)): ?>
@@ -28,8 +30,8 @@
                 </div>
                 <button type="submit">Belépés</button>
             </form>
-            <a href="pages/auth/forgot_password.php">Elfelejtetted a jelszavad?</a>
-            <a href="pages/auth/register.php">Még nincs fiókod? Regisztrálj!</a>
+            <a href="../auth/reset_password.php">Elfelejtetted a jelszavad?</a>
+            <a href="../auth/register.php">Még nincs fiókod? Regisztrálj!</a>
         </div>
     </div>
 </div>

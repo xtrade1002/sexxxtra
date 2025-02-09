@@ -15,10 +15,8 @@ if (!$profile) {
     die("A profil nem található!");
 }
 
-// Ellenőrizzük, hogy a profile_images tábla létezik-e
 $table_check = $pdo->query("SHOW TABLES LIKE 'profile_images'")->rowCount();
 if ($table_check) {
-    // Képek lekérése, ha a tábla létezik
     $img_stmt = $pdo->prepare("SELECT image_path FROM profile_images WHERE user_id = ?");
     $img_stmt->execute([$user_id]);
     $images = $img_stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -33,8 +31,7 @@ if ($table_check) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($profile['username']); ?> profilja</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link rel="stylesheet" href="../../assets/css/profile.css">
-    <link rel="stylesheet" href="../../assets/css/profile_view.css">
+    <link rel="stylesheet" href="../../assets/css/profle_view.css">
     <script>
         function changeMainImage(src) {
             document.getElementById("main-profile-image").src = src;
@@ -43,45 +40,119 @@ if ($table_check) {
 </head>
 <body>
 
-<div class="profile-container">
-    <div class="profile-header">
-        <h1><?php echo htmlspecialchars($profile['username']); ?></h1>
-        <p><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars($profile['location']); ?></p>
-    </div>
-
-    <div class="profile-gallery">
-        <div class="main-image">
-            <img id="main-profile-image" src="<?php echo htmlspecialchars($profile['profile_picture'] ?? '../../assets/pictures/default.jpg'); ?>" alt="Profilkép">
-        </div>
-        <div class="thumbnail-gallery">
-            <?php foreach ($images as $image): ?>
+<div class="profile-wrapper">
+    <div class="profile-container">
+        <div class="profile-left">
+            <div class="profile-image">
+                <img id="main-profile-image" src="<?php echo htmlspecialchars($profile['profile_picture'] ?? '../../assets/pictures/default.jpg'); ?>" alt="Profilkép">
+            </div>
+            <div class="thumbnail-container">
+        <?php
+        $imageCount = 0;
+        foreach ($images as $image):
+            if ($imageCount < 6): ?>
                 <img src="<?php echo htmlspecialchars($image['image_path']); ?>" alt="Profilkép" onclick="changeMainImage(this.src)">
-            <?php endforeach; ?>
+        <?php 
+            $imageCount++;
+            endif;
+        endforeach;
+        ?>
+    </div>
+
+        <?php if (count($images) > 6): ?>
+            <button class="show-more">Mutasd a többit</button>
+        <?php endif; ?>
+
+        <div class="profile-description">
+            <h2>Bemutatkozás</h2>
+            <p><?php echo nl2br(htmlspecialchars($profile['description'] ?? 'Nincs megadva')); ?></p>
+        </div>
+        <div class="services">
+            <h2>Szolgáltatások</h2>
+            <ul>
+                <?php 
+                $services = explode(",", $profile['services'] ?? '');
+                foreach ($services as $service): ?>
+                    <li><img src="../../assets/pictures/ok.png" alt="Pipa" class="checkmark-icon">
+                    <?php echo htmlspecialchars($service); ?></li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     </div>
 
-    <div class="profile-details">
-        <h2>Rólam</h2>
-        <p><?php echo nl2br(htmlspecialchars($profile['description'] ?? 'Nincs megadva')); ?></p>
+    <div class="profile-right">
+    <div class="contact-info">
+        <h2 style="color:white;">Név</h2>
+            <p style="display: flex; align-items: center;justify-content: center;">
+                <img src="../../assets/pictures/phone.png" alt="Telefon" class="contact-icon">
+                <span><?php echo htmlspecialchars($profile['phone_number'] ?? 'Nincs megadva'); ?></span>
+            </p>
 
-        <h2>Szolgáltatások és árak</h2>
-        <p><?php echo nl2br(htmlspecialchars($profile['services'] ?? 'Nincs megadva')); ?></p>
+            
+            <div class="social-icons">
+                <?php if (!empty($profile['whatsapp'])): ?>
+                    <img src="../../assets/picture/whatsapp.png" alt="WhatsApp">
+                <?php endif; ?>
+                <?php if (!empty($profile['viber'])): ?>
+                    <img src="../../assets/picture/viber.png" alt="Viber">
+                <?php endif; ?>
+                <?php if (!empty($profile['telegram'])): ?>
+                    <img src="../../assets/picture/telegram.png" alt="Telegram">
+                <?php endif; ?>
+            </div>
+        </div>
 
-        <h2>Elérhetőség</h2>
+        <div class="user-details">
+        <h2>Adataim</h2>
         <ul>
-            <li>Hétfő: <?php echo htmlspecialchars($profile['monday_availability'] ?? 'Nincs megadva'); ?></li>
-            <li>Kedd: <?php echo htmlspecialchars($profile['tuesday_availability'] ?? 'Nincs megadva'); ?></li>
-            <li>Szerda: <?php echo htmlspecialchars($profile['wednesday_availability'] ?? 'Nincs megadva'); ?></li>
-            <li>Csütörtök: <?php echo htmlspecialchars($profile['thursday_availability'] ?? 'Nincs megadva'); ?></li>
-            <li>Péntek: <?php echo htmlspecialchars($profile['friday_availability'] ?? 'Nincs megadva'); ?></li>
-            <li>Szombat: <?php echo htmlspecialchars($profile['saturday_availability'] ?? 'Nincs megadva'); ?></li>
-            <li>Vasárnap: <?php echo htmlspecialchars($profile['sunday_availability'] ?? 'Nincs megadva'); ?></li>
+            <li><strong>Magasság: </strong> <?php echo htmlspecialchars($profile['height'] ?? 'Nincs megadva'); ?></li>
+            <li><strong>Szemszín: </strong> <?php echo htmlspecialchars($profile['eye_color'] ?? 'Nincs megadva'); ?></li>
+            <li><strong>Hajszín: </strong> <?php echo htmlspecialchars($profile['hair_color'] ?? 'Nincs megadva'); ?></li>
+            <li><strong>Testalkat: </strong> <?php echo htmlspecialchars($profile['body_type'] ?? 'Nincs megadva'); ?></li>
+            <li><strong>Etnikum: </strong> <?php echo htmlspecialchars($profile['ethnicity'] ?? 'Nincs megadva'); ?></li>
+            <li><strong>Szexualitás: </strong> <?php echo htmlspecialchars($profile['sexuality'] ?? 'Nincs megadva'); ?></li>
+            <li><strong>Kinek nyújt szolgáltatást: </strong> <?php echo htmlspecialchars($profile['services_for'] ?? 'Nincs megadva'); ?></li>
         </ul>
-
-        <h2>Kapcsolatfelvétel</h2>
-        <button class="message-btn">Üzenet küldése</button>
-    </div>
 </div>
 
+
+        <div class="availability">
+            <h2>Elérhetőség</h2>
+            <ul>
+                <li><strong>Hétfő: </strong><?php echo htmlspecialchars($profile['monday_availability'] ?? 'Nincs megadva'); ?></li>
+                <li><strong>Kedd: </strong><?php echo htmlspecialchars($profile['tuesday_availability'] ?? 'Nincs megadva'); ?></li>
+                <li><strong>Szerda:</strong> <?php echo htmlspecialchars($profile['wednesday_availability'] ?? 'Nincs megadva'); ?></li>
+                <li><strong>Csütörtök:</strong> <?php echo htmlspecialchars($profile['thursday_availability'] ?? 'Nincs megadva'); ?></li>
+                <li><strong>Péntek: </strong><?php echo htmlspecialchars($profile['friday_availability'] ?? 'Nincs megadva'); ?></li>
+                <li><strong>Szombat: </strong><?php echo htmlspecialchars($profile['saturday_availability'] ?? 'Nincs megadva'); ?></li>
+                <li><strong>Vasárnap: </strong><?php echo htmlspecialchars($profile['sunday_availability'] ?? 'Nincs megadva'); ?></li>
+            </ul>
+        </div>
+        <div class="pricing">
+            <h2>Árak</h2>
+            <p>1 óra: <?php echo htmlspecialchars($profile['price_one_hour'] ?? 'Nincs megadva'); ?></p>
+            <p>2 óra: <?php echo htmlspecialchars($profile['price_two_hours'] ?? 'Nincs megadva'); ?></p>
+            <p>Egész éjszaka: <?php echo htmlspecialchars($profile['price_night'] ?? 'Nincs megadva'); ?></p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const showMoreBtn = document.querySelector(".show-more");
+    const hiddenImages = document.querySelectorAll(".thumbnail-container img.hidden");
+
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener("click", function () {
+            hiddenImages.forEach(img => img.classList.remove("hidden"));
+            showMoreBtn.style.display = "none"; // Gomb eltüntetése kattintás után
+        });
+    }
+});
+</script>
 </body>
 </html>

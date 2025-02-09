@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="auth-box">
         <div class="image-container"></div>
         <div class="form-container">
+        <div class="close-btn" onclick="window.location.href='../../index.php'">&times;</div>
             <div class="logo">
                 <img src="../../assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
             </div>
@@ -63,10 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="Jelszó" required>
                 <input type="password" name="confirm_password" placeholder="Jelszó újra" required>
-                <label><input type="checkbox" name="terms" required> Elfogadom az <a href="#">ÁSZF-et</a></label>
+                <div class="terms-container">
+                    <input type="checkbox" name="terms" id="terms" required>
+                    <label for="terms">Elfogadom az <a href="../pages/menu/terms.php"> ÁSZF-et</a> és az <a href="pages/menu/privacy.php"> Adatvédelmi szerődést</a> </label>
+                </div>
                 <button type="submit">Regisztráció</button>
             </form>
-            <a href="pages/auth/login.php">Már van fiókod? Jelentkezz be!</a>
+            <a href="../auth/login.php">Már van fiókod? Jelentkezz be!</a>
         </div>
     </div>
 </div>

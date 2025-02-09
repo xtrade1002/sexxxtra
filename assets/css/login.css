@@ -77,9 +77,10 @@ body {
 /* 🔹 Elfelejtett jelszó link */
 .auth-box a {
     display: block;
-    margin-top: 10px;
+    margin-top: 30px;
     color: #ff219e;
     text-decoration: none;
+    font-size: 14px;
 }
 
 .auth-box a:hover {
@@ -123,3 +124,17 @@ body {
 }
 
 
+/* 🔹 Bezárás gomb (X) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: #ff219e;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    color: #32eaff;
+}

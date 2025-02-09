@@ -1,98 +1,333 @@
+/* Alapbeállítások */
 body {
     background-color: #1D1D1D;
     color: white;
     font-family: Arial, sans-serif;
-}
-
-.profile-container {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #292929;
-    border-radius: 10px;
-}
-
-.profile-header h1 {
-    color: #ff219e;
-}
-
-.profile-gallery {
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.main-image img {
-    width: 300px;
-    height: auto;
-    border-radius: 10px;
-}
-
-.thumbnail-gallery img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.profile-details {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #333;
-    border-radius: 10px;
-}
-
-.profile-details h2 {
-    color: #32eaff;
-}
-
-.message-btn {
-    display: block;
-    width: 100%;
-    background-color: #ff219e;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.message-btn:hover {
-    background-color: #32eaff;
-}
-
-
-.profile-gallery {
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
-.main-image img {
-    width: 300px;
+.profile-wrapper {
+    width: 1100px; /* A teljes doboz maximális szélessége */
+    margin: 100px auto; /* 100px margó fent és lent, középre igazítás */
+    background-color: #121212; /* Háttérszín, hogy kiemelkedjen az oldalból */
+    padding: 40px;
+    border-radius: 15px; /* Lekerekített sarkok */
+    box-shadow: 0px 0px 20px rgba(255, 33, 158, 0.5); /* Árnyék */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.profile-left {
+    flex: 1;
+    min-width: 60%;
+}
+
+.profile-image img {
+    width: 100%;
     height: auto;
     border-radius: 10px;
-    margin-bottom: 10px;
+    object-fit: cover;
+    content: url('../../assets/pictures/testprofil.jpeg');
 }
 
-.thumbnail-gallery {
+.hidden {
+    display: none;
+}
+
+
+/*Thmbnail képek*/
+.thumbnail-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    max-width: 320px;
+    grid-template-columns: repeat(2, 1fr); /* 2 oszlopos elrendezés */
+    grid-template-rows: repeat(3, auto); /* 3 sor */
+    gap: 5px;
+    margin-top: 10px;
+    max-width: 200px; /* Igazítsd a fő kép szélességéhez */
 }
 
-.thumbnail-gallery img {
-    width: 70px;
-    height: 70px;
-    border-radius: 5px;
+.thumbnail-container img {
+    width: 100%;
+    height: auto;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
-.thumbnail-gallery img:hover {
+.thumbnail-container img:nth-child(n+7) {
+    display: none;
+}
+
+.thumbnail-container img:hover {
     transform: scale(1.1);
+}
+
+/*Mutass többet gomb*/
+.show-more {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff219e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.show-more:hover {
+    background-color: #32eaff;
+}
+
+.profile-right {
+    flex: 1;
+    min-width: 300px;
+    position: relative; /* Korábbi abszolút pozicionálás eltávolítása */
+    right: 0;
+    height: auto;
+    padding: 20px;
+    margin-left: 30px;
+}
+
+/* Információs dobozok */
+.contact-info, .availability, .pricing, .profile-description, .services {
+    border: 1px solid #32eaff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-info h2{
+    color: #ff219e !important;
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: center !important;
+}
+
+.availability h2, .pricing h2, .profile-description h2, .services h2 {
+    color: #32eaff;
+    margin-bottom: 10px;
+    text-align: center !important;
+}
+
+.social-icons img {
+    width: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+/*Bemutatkozás  box*/
+.profile-description{
+    width: 100%; /* Növeli a doboz szélességét */
+    margin-top: 20px;
+}
+
+.profile-description h2, .services h2 {
+    text-align: center;
+}
+
+/* Szolgáltatások lista */
+.services ul {
+    list-style: none;
+    padding: 0;
+}
+
+.services li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.services {
+    width: 100%; /* Növeli a doboz szélességét */
+    margin-top: 10px;
+
+}
+
+
+
+
+.checkmark-icon {
+    width: 16px; /* Vagy amekkora méretet szeretnél */
+    height: auto;
+    vertical-align: middle; /* Igazítás a szöveghez */
+}
+
+
+/* Táblázatos megjelenítés az árakhoz */
+.pricing p {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+
+/*Név box*/
+.contact-icon {
+    width: 20px;  /* Ikon szélesség */
+    height: 20px; /* Ikon magasság */
+    vertical-align: middle;
+    margin-right: 8px;
+    object-fit: contain; /* Biztosítja, hogy az ikon ne nyúljon meg */
+}
+
+
+/* adataim box*/
+.user-details {
+    border: 2px solid #32eaff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: left; /* Balra igazítás */
+}
+
+.user-details h2 {
+    color: #32eaff;
+    margin-bottom: 10px;
+    text-align: center; /* Középre igazítás */
+}
+
+.user-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.user-details li {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between; /* A címek balra, az értékek jobbra igazítása */
+}
+
+.user-details li strong {
+    font-weight: bold;
+    color: white;
+}
+
+
+/* Elérhetőségek box*/
+.availability ul {
+    list-style: none;
+    padding: 0;
+}
+
+.availability li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.availability li.today {
+    background-color: #ff219e;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Thumbnail-ek elrendezése 2 oszlop, 3 sor */
+.thumbnail-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    max-width: 300px;
+}
+
+.thumbnail-container img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.thumbnail-container img:hover {
+    transform: scale(1.1);
+}
+
+.show-more {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff219e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.show-more:hover {
+    background-color: #32eaff;
+}
+
+.profile-right {
+    width: 50%;
+    padding: 20px;
+}
+
+/* Hirdetési helyek beállítása */
+.ad-space {
+    background-color: white;
+    width: 150px;
+    height: 200px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.ad-container {
+    position: absolute;
+    top: 0;
+    left: -220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ad-container-right {
+    position: absolute;
+    top: 0;
+    right: -220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ad-container-top {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ad-top {
+    width: 120px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+
+/********************************* Reszponzivitás ****************************************/
+
+@media (max-width: 768px) {
+    .profile-description, .services {
+        width: 95%; /* Mobilon nagyobb területet foglaljon el */
+    }
 }
