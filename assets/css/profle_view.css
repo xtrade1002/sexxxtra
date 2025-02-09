@@ -12,7 +12,8 @@ body {
 
 .profile-wrapper {
     width: 1100px; /* A teljes doboz maximális szélessége */
-    margin: 100px auto; /* 100px margó fent és lent, középre igazítás */
+    margin-top: 100px auto; /* 100px margó fent és lent, középre igazítás */
+    margin-bottom: 100px;
     background-color: #121212; /* Háttérszín, hogy kiemelkedjen az oldalból */
     padding: 40px;
     border-radius: 15px; /* Lekerekített sarkok */
@@ -27,6 +28,15 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
+    padding-bottom: 20px; /* Ezt csökkentsd, ha túl nagy a távolság */
+    padding-top: 50px;
+    margin-bottom: 0; /* Ellenőrizd, hogy van-e margin */
+}
+
+
+.profile-container > * {
+    max-width: 100%;
+    overflow: hidden;
 }
 
 
@@ -36,11 +46,20 @@ body {
 }
 
 .profile-image img {
-    width: 100%;
+    width: 500px;
     height: auto;
     border-radius: 10px;
     object-fit: cover;
     content: url('../../assets/pictures/testprofil.jpeg');
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .hidden {
@@ -102,9 +121,9 @@ body {
 }
 
 /* Információs dobozok */
-.contact-info, .availability, .pricing, .profile-description, .services {
+.contact-info, .availability, .pricing, .profile-description, .services, .user-details {
     border: 1px solid #32eaff;
-    padding: 20px;
+    padding: 20px 30px !important; ;
     border-radius: 10px;
     margin-bottom: 15px;
 }
@@ -122,17 +141,42 @@ body {
     text-align: center !important;
 }
 
-.social-icons img {
-    width: 30px;
-    margin-right: 10px;
-    cursor: pointer;
+/*social ikonok*/
+.social-icons {
+    display: flex;
+    justify-content: center; /* Középre igazítás */
+    align-items: center;
+    gap: 15px; /* Ikonok közötti távolság */
+    margin-top: 30px;
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px; /* Ikonok mérete */
+    height: 30px;
+    background-color: transparent; /* Ha szükséges, háttérszín */
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ff219e; /* Ikon színe */
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #32eaff; /* Hover szín */
 }
 
 
+
 /*Bemutatkozás  box*/
-.profile-description{
-    width: 100%; /* Növeli a doboz szélességét */
-    margin-top: 20px;
+.profile-description,
+.services {
+    width: 90%; /* Az eddigi szélességnél kicsit nagyobb */
+    max-width: 800px; /* A többi dobozhoz igazítva */
+    margin: 20px auto; /* Középre igazítás és nagyobb távolság a dobozok között */
+    padding: 15px 20px; /* A tartalom ne tapadjon a széléhez */
 }
 
 .profile-description h2, .services h2 {
@@ -149,12 +193,6 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-}
-
-.services {
-    width: 100%; /* Növeli a doboz szélességét */
-    margin-top: 10px;
-
 }
 
 
@@ -322,12 +360,170 @@ body {
     border-radius: 10px;
 }
 
+/*Favorites*/
+.profile-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.meta-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center; /* Az ikon és a szöveg középre kerül egy sorban */
+    gap: 8px; /* Távolság az ikon és a szöveg között */
+    vertical-align: middle;
+}
+
+/* A szív ikon fix méretű, és nem változik */
+.favorite-btn img {
+    width: 24px;
+    height: 24px;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+}
+
+/* Minden hover és interakció teljes kikapcsolása */
+.favorite-btn:hover img,
+.favorite-btn:focus img,
+.favorite-btn:active img {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    width: 24px !important;
+    height: 24px !important;
+    filter: none !important;
+    color: white !important;
+}
+
+
+/* "Mentés" szöveg stílusa */
+.favorite-text {
+    font-size: 16px;
+    color: white;
+    line-height: 24px; /* Ugyanolyan magas, mint az ikon */
+    vertical-align: middle;
+}
+
+
+.location-favorite-container {
+    display: flex;
+    justify-content: space-between; /* Egyenletes elrendezés */
+    align-items: center; /* Függőleges középre igazítás */
+    gap: 15px;
+    padding: 5px 0;
+}
+
+.location, .favorite {
+    display: flex;
+    align-items: center; /* Az ikon és a szöveg egy vonalban lesz */
+    gap: 6px;
+}
+
+.location img, .favorite img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* "Mentés" és a városnév egységes magasságra */
+.location span, .favorite span {
+    font-size: 16px;
+    color: white;
+    line-height: 20px; /* Ugyanolyan magas, mint az ikon */
+}
+
+
+
+
+/* Hely és Mentés gomb egy sorban */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Telefonszám és ikonok egy sorban */
+.phone-social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Telefonszám középre igazítása */
+.phone-number {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.phone-number img {
+    width: 20px;
+    height: 20px;
+}
+
+.phone-link {
+    text-decoration: none; /* Aláhúzás eltávolítása */
+    color: white; /* Alapértelmezett szín */
+    font-weight: bold;
+}
+
+.phone-link:hover {
+    color: #32eaff; /* Hover szín */
+}
+
+
+/* Social ikonok egy vonalban */
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons img {
+    width: 25px;
+    height: 25px;
+    transition: 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
 
 
 /********************************* Reszponzivitás ****************************************/
 
+
 @media (max-width: 768px) {
-    .profile-description, .services {
-        width: 95%; /* Mobilon nagyobb területet foglaljon el */
+    .profile-description,
+    .services {
+        width: 95%; /* Mobilon szélesebb, hogy illeszkedjen */
+        margin: 15px auto;
+    }
+    .logo img {
+        width: 150px;
+    }
+
+    .profile-image img {
+        width: 120px;
+        height: 120px;
     }
 }

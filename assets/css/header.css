@@ -1,13 +1,21 @@
 /* 🔹 Felső sáv (Bejelentkezés & Regisztráció) */
 .top-header {
+    width: 100%;
+    position: fixed; /* Rögzített pozíció, hogy mindig fent maradjon */
+    top: 0;
+    left: 0;
     display: flex;
+    z-index: 1000; /* Biztosítja, hogy a legfelső rétegben maradjon */
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
     background-color: black;
     position: relative;
-    height: 200px;
+    height: 100px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
 }
+
 
 /* 🔹 Logó középre igazítása és nagyobb méret */
 .logo {
@@ -15,6 +23,7 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1; /* Rugalmas méretezés */
+    text-align: center;
 }
 
 .logo img {
@@ -24,6 +33,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    display: block;
 }
 
 /* 🔹 Bejelentkezési és regisztrációs gombok jobbra */
@@ -51,10 +61,12 @@
 .language-dropdown {
     width: auto; /* Automatikusan igazodik a zászlók szélességéhez */
     min-width: 50px; /* Biztosítja, hogy ne legyen túl keskeny */
-    padding: 5px 0; /* Kisebb belső margó */
+    padding: 5px 0px; /* Kisebb belső margó */
+    margin-right: 50px;
+    margin-left: 20px;
     border-radius: 5px; /* Lekerekített sarkok */
     text-align: center; /* Szövegek és elemek középre igazítása */
-    margin-left: 20px;
+    position: relative;
 }
 
 /* 🔹 Nyelvválasztó gomb */
@@ -118,14 +130,22 @@
     transform: scale(1.1);
 }
 
-/*Mobile view*/
+
+
+
+/***************************** 🔹 Reszponzivitás ***********/
 @media (max-width: 768px) {
     .top-header {
         flex-direction: column;
         text-align: center;
+        height: auto;
     }
     
+    .logo img {
+        height: 80px; /* Mobilon kisebb logó */
+    }
+
     .auth-section {
-        margin-left: 0;
+        margin-top: 10px;
     }
 }

@@ -1,6 +1,8 @@
 <?php
 session_start();
 require __DIR__ . '/../../config.php';
+require_once '../../includes/header.php';
+
 
 if (!isset($_GET['id'])) {
     die("\Érvénytelen profil azonosító.");
@@ -31,7 +33,10 @@ if ($table_check) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($profile['username']); ?> profilja</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/profle_view.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+
     <script>
         function changeMainImage(src) {
             document.getElementById("main-profile-image").src = src;
@@ -83,21 +88,40 @@ if ($table_check) {
     <div class="profile-right">
     <div class="contact-info">
         <h2 style="color:white;">Név</h2>
-            <p style="display: flex; align-items: center;justify-content: center;">
-                <img src="../../assets/pictures/phone.png" alt="Telefon" class="contact-icon">
-                <span><?php echo htmlspecialchars($profile['phone_number'] ?? 'Nincs megadva'); ?></span>
-            </p>
+        <div class="location-favorite-container">
+    <div class="location">
+        <img src="../../assets/pictures/location.png" alt="Hely">
+        <span><?php echo htmlspecialchars($profile['city'] ?? 'Nincs megadva'); ?></span>
+    </div>
+    <button class="favorite favorite-btn">
+        <img src="../../assets/pictures/like.png" alt="Mentés">
+        <span class="favorite-text">Mentés</span>
+    </button>
+</div>
 
+
+            <p style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                <img src="../../assets/pictures/phone.png" alt="Telefon" class="contact-icon phone-number">
+                <a href="tel:<?php echo htmlspecialchars($profile['phone_number'] ?? ''); ?>" class="phone-link">
+                    <?php echo htmlspecialchars($profile['phone_number'] ?? 'Nincs megadva'); ?>
+                </a>
+            </p>
             
             <div class="social-icons">
                 <?php if (!empty($profile['whatsapp'])): ?>
-                    <img src="../../assets/picture/whatsapp.png" alt="WhatsApp">
+                    <a href="https://wa.me/<?php echo htmlspecialchars($profile['phone_number']); ?>" target="_blank">
+                        <img src="../../assets/pictures/whatsapp.png" alt="WhatsApp">
+                    </a>
                 <?php endif; ?>
                 <?php if (!empty($profile['viber'])): ?>
-                    <img src="../../assets/picture/viber.png" alt="Viber">
+                    <a href="viber://chat?number=<?php echo htmlspecialchars($profile['phone_number']); ?>" target="_blank">
+                        <img src="../../assets/pictures/viber.png" alt="Viber">
+                    </a>
                 <?php endif; ?>
                 <?php if (!empty($profile['telegram'])): ?>
-                    <img src="../../assets/picture/telegram.png" alt="Telegram">
+                    <a href="https://t.me/<?php echo htmlspecialchars($profile['telegram']); ?>" target="_blank">
+                        <img src="../../assets/pictures/telegram.png" alt="Telegram">
+                    </a>
                 <?php endif; ?>
             </div>
         </div>
@@ -140,6 +164,27 @@ if ($table_check) {
 
 
 
+<script>
+function toggleFavorite(button, userId) {
+    let icon = document.getElementById("fav-icon-" + userId);
+    
+    if (icon.src.includes("like.png")) {
+        icon.src = "../../assets/pictures/liked.png"; // Ha még nincs hozzáadva
+    } else {
+        icon.src = "../../assets/pictures/like.png"; // Ha már hozzá van adva
+    }
+
+    // AJAX kérés küldése a szerverre, hogy elmentsük az állapotot
+    fetch("../../pages/profile/toggle_favorite.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "user_id=" + userId
+    }).then(response => response.text())
+      .then(data => console.log(data));
+}
+</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -154,5 +199,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>
 </body>
 </html>

@@ -1,9 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1; /* Ez kitölti a rendelkezésre álló helyet */
+}
+
 /* 🔹 Footer Alapbeállítások */
 .site-footer {
+    position: relative; /* Nem fix, így mindig a tartalom után jön */
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: #1D1D1D;
-    padding: 25px 0;
+    padding: 10px 0;
     text-align: center;
     border-top: 2px solid #ff219e;
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.footer-menu li a {
+    color: #ff219e;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+.footer-menu li a:hover {
+    color: #32eaff;
 }
 
 /* 🔹 Footer menü */
@@ -27,55 +61,24 @@
     transition: color 0.3s ease-in-out;
 }
 
-.footer-menu a:hover {
-    color: #32eaff;
-}
-
-/* 🔹 Közösségi ikonok */
-.footer-social {
+.profile-wrapper {
+    min-height: 100vh; /* A teljes képernyő magasságát kitölti */
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    margin-bottom: 50px; /* Növeli a lábléc feletti távolságot */
 }
 
-.social-icon {
-    color: white;
-    font-size: 22px;
-    transition: 0.3s;
-}
-
-.social-icon:hover {
-    color: #ff219e;
-    transform: scale(1.2);
-}
 
 /* 🔹 Copyright szöveg */
 .footer-copyright {
-    margin-top: 15px;
+    margin-top: 5px;
     font-size: 12px;
     opacity: 0.8;
     color: white;
 }
 
-/* 🔹 Nyelvválasztó */
-.footer-language {
-    margin-top: 10px;
-}
-
-.footer-language select {
-    background-color: #1D1D1D;
-    color: white;
-    border: 1px solid #ff219e;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.footer-language select:hover {
-    border-color: #32eaff;
-}
 
 /* 🔹 Reszponzivitás: Mobil optimalizálás */
 @media (max-width: 768px) {

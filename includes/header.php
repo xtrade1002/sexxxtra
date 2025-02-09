@@ -9,7 +9,7 @@
 </head>
 <header class="top-header">
     <div class="logo">
-        <img src="assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
+        <img src="../assets/pictures/sexxxtra_logo.png" alt="Sexxxtra Logo">
     </div>
     <div class="auth-section">
         <?php if (isset($_SESSION['user_id'])): ?>
@@ -35,6 +35,13 @@
         <img src="assets/pictures/flag_sk.png" alt="Slovenčina" data-lang="sk">
     </div>
 </div>
+ 
+
+
+
+
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {

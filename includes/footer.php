@@ -11,12 +11,6 @@
         </ul>
     </nav>
 
-    <!-- Közösségi ikonok -->
-    <div class="footer-social">
-        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-    </div>
 
     <!-- Copyright -->
     <p class="footer-copyright">&copy; <?php echo date("Y"); ?> Sexxxtra. Minden jog fenntartva.</p>

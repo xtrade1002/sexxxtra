@@ -1,0 +1,46 @@
+
+/* 🔹 Kategóriaválasztó menü stílusok */
+/* 🔹 Kategóriák fő tartó elem */
+.category-container {
+    text-align: center;
+    margin-top: 80px !important; /* Távolság a logótól */
+}
+
+.category-menu {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-menu li {
+    display: inline;
+}
+
+.category-menu a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: #ff219e;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* 🔹 Kiválasztott kategória kiemelése */
+.category-menu a.active {
+    background-color: #32eaff;
+    font-weight: bold;
+}
+
+.category-menu a:hover {
+    background-color: #ff219e;
+}
+

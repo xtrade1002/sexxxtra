@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/header.php';
 require_once 'pages/search/search.php';
+require_once 'pages/auth/login.php';
+require_once 'pages/auth/logut.php';
+require_once 'pages/auth/register.php';
 require_once 'config.php';
 
 // Lapozáshoz szükséges változók
@@ -32,6 +35,7 @@ $total_pages = ceil($total_profiles / $profiles_per_page);
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/profile.css">
     <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body>
 
@@ -63,6 +67,6 @@ $total_pages = ceil($total_profiles / $profiles_per_page);
         <?php endif; ?>
     </div>
 </section>
-
+<?php require_once 'includes/footer.php'; ?>
 </body>
 </html>
