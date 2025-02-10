@@ -1,6 +1,7 @@
 <?php
 // Alapbeállítások
-define('BASE_PATH', __DIR__ . '/'); // A projekt gyökérkönyvtára
+define("BASE_URL", "http://localhost/sexxxtra/");
+
 
 $host = "localhost";
 $dbname = "sexxxtra_db";

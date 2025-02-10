@@ -1,0 +1,30 @@
+.dashboard-container {
+    width: 60%;
+    margin: 20px auto;
+    background: #1D1D1D;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+h2 {
+    color: #32eaff;
+    text-align: center;
+}
+
+.user-info {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-info th {
+    text-align: left;
+    padding: 10px;
+    color: #ff219e;
+}
+
+.user-info td {
+    padding: 10px;
+    background: #191919;
+    border-bottom: 1px solid #444;
+}

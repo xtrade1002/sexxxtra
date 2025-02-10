@@ -34,6 +34,7 @@
     width: 24px;
     height: 24px;
     margin-left: 10px;
+    vertical-align: middle;
 }
 
 /* 🔹 Lenyíló tartalom */
@@ -48,6 +49,7 @@
 /* 🔹 Lenyitott állapot */
 .dropdown-content.active {
     display: block;
+    max-height: 200px; 
 }
 
 /* 🔹 Kereső gomb */
