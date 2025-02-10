@@ -18,13 +18,16 @@
             <div class="banner-ad">Hirdetési hely</div>
             <div class="banner-ad">Hirdetési hely</div>
             <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
         </aside>
         <!-- Bal oldali menü -->
         <aside class="sidebar">
             <div class="menu-item">
                 <button class="menu-toggle">Adataim</button>
                 <div class="submenu">
-                    <a href="#">Alapadatok</a>
+                <a href="../users_dashboard/infos/basic.php">Alapadatok</a>
                     <a href="#">Szolgáltatások</a>
                     <a href="#">Elérhetőség</a>
                     <a href="#">Magamról</a>
@@ -68,17 +71,38 @@
 
         <!-- Fő tartalom -->
         <main class="dashboard-content">
-            <div class="dashboard-header">
-                <h1>Üdvözlünk kedves <span id="username">Felhasználó</span>!</h1>
-                <div class="notifications">
-                    <i class="fa fa-bell"></i>
-                </div>
-            </div>
-            <p>Itt kezelheted a hirdetéseidet, beállításaidat és profilodat.</p>
-        </main>
+    <div class="dashboard-header">
+        <h1>Üdvözlünk kedves <span id="username"><?php echo htmlspecialchars($user["name"] ?? "Felhasználó"); ?></span>!</h1>
+        <div class="notifications">
+            <i class="fa fa-bell"></i>
+        </div>
+    </div>
+    <p>Itt kezelheted a hirdetéseidet, beállításaidat és profilodat.</p>
+
+    <table>
+        <tr><th>Név:</th><td><?php echo htmlspecialchars($user["name"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Nemzetiség:</th><td><?php echo htmlspecialchars($user["nationality"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Etnikum:</th><td><?php echo htmlspecialchars($user["ethnicity"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Életkor:</th><td><?php echo htmlspecialchars($user["age"] ?? "Nincs megadva"); ?> éves</td></tr>
+        <tr><th>Hajszín:</th><td><?php echo htmlspecialchars($user["hair_color"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Szemszín:</th><td><?php echo htmlspecialchars($user["eye_color"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Magasság:</th><td><?php echo htmlspecialchars($user["height"] ?? "Nincs megadva"); ?> cm</td></tr>
+        <tr><th>Súly:</th><td><?php echo htmlspecialchars($user["weight"] ?? "Nincs megadva"); ?> kg</td></tr>
+        <tr><th>Ruhaméret:</th><td><?php echo htmlspecialchars($user["clothing_size"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Cipőméret:</th><td><?php echo htmlspecialchars($user["shoe_size"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Mellméret:</th><td><?php echo htmlspecialchars($user["breast_size"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Intim szőrzet:</th><td><?php echo htmlspecialchars($user["intimate_hair"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Dohányzás:</th><td><?php echo htmlspecialchars($user["smoking"] ?? "Nincs megadva"); ?></td></tr>
+        <tr><th>Alkoholfogyasztás:</th><td><?php echo htmlspecialchars($user["alcohol"] ?? "Nincs megadva"); ?></td></tr>
+    </table>
+</main>
+
 
         <!-- Jobb oldali hirdetések -->
         <aside class="sidebar banners">
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
             <div class="banner-ad">Hirdetési hely</div>
             <div class="banner-ad">Hirdetési hely</div>
             <div class="banner-ad">Hirdetési hely</div>

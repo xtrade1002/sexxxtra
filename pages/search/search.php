@@ -9,19 +9,19 @@
             <input type="text" name="keywords" placeholder="Kulcsszó">
         </div>
 
-        <div class="search-category">Szolgáltatás <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Szolgáltatás <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
         <div class="dropdown-content">
             <label><input type="checkbox" name="service[]" value="masszazs"> Masszázs</label>
             <label><input type="checkbox" name="service[]" value="webcam"> Webcam</label>
             <label><input type="checkbox" name="service[]" value="escort"> Escort</label>
         </div>
 
-        <div class="search-category">Város <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás" ></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Város <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás" ></div>
         <div class="dropdown-content">
             <input type="text" name="city" placeholder="Város">
         </div>
 
-        <div class="search-category">Szexualitás <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás" ></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Szexualitás <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás" ></div>
         <div class="dropdown-content">
             <label><input type="radio" name="sexuality" value="hetero"> Hetero</label>
             <label><input type="radio" name="sexuality" value="biszex"> Biszex</label>
@@ -29,7 +29,7 @@
             <label><input type="radio" name="sexuality" value="leszbikus"> Leszbikus</label>
         </div>
 
-        <div class="search-category">Etnikum <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás" ></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Etnikum <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás" ></div>
         <div class="dropdown-content">
             <select name="ethnicity">
                 <option value="">Válassz</option>
@@ -40,7 +40,7 @@
             </select>
         </div>
 
-        <div class="search-category">Szemszín <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Szemszín <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
         <div class="dropdown-content">
             <select name="eye_color">
                 <option value="">Válassz</option>
@@ -51,13 +51,13 @@
             </select>
         </div>
 
-        <div class="search-category">Életkor <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Életkor <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
         <div class="dropdown-content">
             <input type="number" name="age_min" placeholder="Tól" min="18">
             <input type="number" name="age_max" placeholder="Ig" min="18">
         </div>
 
-        <div class="search-category">Testalkat <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Testalkat <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
         <div class="dropdown-content">
             <select name="body_type">
                 <option value="">Válassz</option>
@@ -69,7 +69,7 @@
             </select>
         </div>
 
-        <div class="search-category">Megjelenés dátuma <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
+        <div class="search-category" onclick="toggleDropdown(this)">Megjelenés dátuma <img src="assets/pictures/down_neon.png" class="dropdown-icon" alt="Nyitás"></div>
         <div class="dropdown-content">
             <select name="date">
                 <option value="">Válassz</option>
@@ -88,18 +88,19 @@
 
 
     <script>
-function toggleDropdown(id) {
-    let dropdown = document.getElementById(id);
-    let icon = dropdown.previousElementSibling.querySelector(".dropdown-icon");
+function toggleDropdown(element) {
+    let content = element.nextElementSibling;
+    let icon = element.querySelector(".dropdown-icon");
 
-    if (dropdown.classList.contains("active")) {
-        dropdown.classList.remove("active");
-        icon.src = "assets/pictures/down_neon.png"; // Nyíl lefelé
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        icon.src = "assets/pictures/down_neon.png"; // Visszacsukás ikon
     } else {
-        dropdown.classList.add("active");
-        icon.src = "assets/pictures/up.png"; // Nyíl felfelé
+        content.style.display = "block";
+        icon.src = "assets/pictures/up.png"; // Nyitott állapot ikon
     }
 }
+
 
 
 </script>
