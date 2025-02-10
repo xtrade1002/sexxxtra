@@ -17,8 +17,8 @@
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="pages/auth/logout.php" class="logout-btn">Kijelentkezés</a>
             <?php else: ?>
-                <a href="../auth/login.php" class="login-btn" onclick="toggleForgotPassword()">Bejelentkezés</a>
-                <a href="../auth/register.php" class="register-btn">Regisztráció</a>
+                <a href="/sexxxtra/pages/auth/login.php" class="login-btn" onclick="toggleForgotPassword()">Bejelentkezés</a>
+                <a href="/sexxxtra/pages/auth/register.php" class="register-btn">Regisztráció</a>
                 
             <?php endif; ?>
         </div>

@@ -1,7 +1,8 @@
 <?php
 session_start();
 require __DIR__ . '/../../config.php';
-require_once '../../includes/header.php';
+require_once BASE_PATH . 'includes/header.php';
+
 
 
 if (!isset($_GET['id'])) {
@@ -199,6 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
-<?php include __DIR__ . '/../../includes/footer.php'; ?>
+<?php require_once BASE_PATH . 'includes/footer.php'; ?>
 </body>
 </html>

@@ -1,9 +1,3 @@
-<?php
-session_start();
-require __DIR__ . '/../../config.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -11,18 +5,20 @@ require __DIR__ . '/../../config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Felhasználói Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/users_dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
 </head>
 <body>
-
-    <!-- Bal oldali hirdetések (KÜLÖN A DASHBOARDTÓL) -->
-    <aside class="sidebar banners left-banners">
-        <div class="banner-ad">Hirdetési hely</div>
-        <div class="banner-ad">Hirdetési hely</div>
-        <div class="banner-ad">Hirdetési hely</div>
-    </aside>
+    <?php include '../../includes/header.php'; ?>
 
     <div class="dashboard-wrapper">
+         <!-- Bal oldali hirdetések -->
+         <aside class="sidebar banners">
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
+        </aside>
         <!-- Bal oldali menü -->
         <aside class="sidebar">
             <div class="menu-item">
@@ -80,14 +76,16 @@ require __DIR__ . '/../../config.php';
             </div>
             <p>Itt kezelheted a hirdetéseidet, beállításaidat és profilodat.</p>
         </main>
+
+        <!-- Jobb oldali hirdetések -->
+        <aside class="sidebar banners">
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
+            <div class="banner-ad">Hirdetési hely</div>
+        </aside>
     </div>
 
-    <!-- Jobb oldali hirdetések (KÜLÖN A DASHBOARDTÓL) -->
-    <aside class="sidebar banners right-banners">
-        <div class="banner-ad">Hirdetési hely</div>
-        <div class="banner-ad">Hirdetési hely</div>
-        <div class="banner-ad">Hirdetési hely</div>
-    </aside>
+    <?php include '../../includes/footer.php'; ?>
 
     <script>
         document.querySelectorAll('.menu-toggle').forEach(button => {
@@ -97,6 +95,5 @@ require __DIR__ . '/../../config.php';
             });
         });
     </script>
-
 </body>
 </html>

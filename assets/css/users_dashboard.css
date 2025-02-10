@@ -20,10 +20,12 @@ body {
 
 /* Oldalsó hirdetések */
 .banners {
-    width: 200px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-left: 30px; /* Bal oldali hirdetések távolsága */
+    margin-right: 30px; /* Jobb oldali hirdetések távolsága */
 }
 
 .banner-ad {
@@ -36,10 +38,11 @@ body {
 
 /* Bal oldali menü */
 .sidebar {
-    width: 200px;
-    background-color: #232323;
+    width: 250px;
+    background-color: #1D1D1D;
     padding: 15px;
     border-radius: 10px;
+
 }
 
 /* Menü elemek */
@@ -93,7 +96,14 @@ body {
     background-color: #1D1D1D;
     padding: 20px;
     margin: 0 15px;
-    border-radius: 10px;
+    border-radius: 15px;
+    width: 900px !important;
+    min-height: 400px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Felső fejléc */

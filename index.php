@@ -1,7 +1,9 @@
 <?php
+session_start();
+require_once 'config.php';
 require_once 'includes/header.php';
 require_once 'pages/search/search.php';
-require_once 'config.php';
+
 
 // Lapozáshoz szükséges változók
 $profiles_per_page = 48; // 6 oszlop * 8 sor = 48 profil oldalanként
