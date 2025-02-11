@@ -16,7 +16,6 @@
     margin-bottom: 30px;
 }
 
-
 /* 🔹 Logó középre igazítása és nagyobb méret */
 .logo {
     display: flex;
@@ -24,42 +23,81 @@
     align-items: center;
     flex-grow: 1; /* Rugalmas méretezés */
     text-align: center;
-    margin-top: 70px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .logo img {
-    height: 120px;
+    height: 100px;
     width: auto;
     margin-top: 20px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: block;
 }
 
-.auth-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* 🔹 Menü a fejléc aljára */
+.menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: black; /* A fejléc színéhez illeszkedik */
 }
 
-/* 🔹 Bejelentkezési és regisztrációs gombok jobbra */
-.auth-section {
-    position: absolute;  /* Fixálás az oldal tetejéhez */
-    top: 20px;           /* 20px távolság a tetejétől */
-    right: 150px;         /* Jobbra igazítás */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 40px;
 }
 
-.auth-wrapper {
-    display: flex;
-    align-items: center;
-    position: absolute;  /* Az oldal tetejéhez rögzítés */
+.menu-list li a {
+    text-decoration: none;
+    color: #ff219e;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s ease-in-out;
+}
+
+.menu-list li a:hover {
+    color: #32eaff; /* Neon kék hover */
+}
+
+/* 🔹 Nyelvválasztó a jobb felső sarokban */
+.language-dropdown {
+    position: absolute;
     top: 20px;
-    right: 20px;
-    gap: 15px; /* Távolság a két elem között */
+    right: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-dropdown button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.language-dropdown img {
+    width: 30px;
+    height: 20px;
+}
+
+/* 🔹 Bejelentkezési és regisztrációs gombok */
+.auth-section {
+    position: absolute;
+    top: 20px;
+    right: 120px; /* Nyelvválasztó mellett marad */
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .auth-section a {
@@ -75,83 +113,6 @@
     background-color: #32eaff;
 }
 
-/* 🔹 Nyelvválasztó dropdown */
-.language-dropdown {
-    min-width: 50px;
-    padding: 5px 0px;
-    margin-right: 20px;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 🔹 Nyelvválasztó gomb */
-.language-dropdown button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Térköz a zászló és a nyíl között */
-}
-
-/* 🔹 Zászló mérete */
-.language-dropdown button img {
-    display: block;
-    margin: 5px auto; /* Zászlók középre igazítása */
-    width: 25px; /* A zászlók mérete */
-    height: auto;
-}
-
-/* 🔹 Nyíl ikon */
-.dropdown-arrow {
-    font-size: 14px;
-    color: #ffffff;
-    transition: transform 0.2s;
-}
-
-/* 🔹 Dropdown alapértelmezés szerint rejtve */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #1D1D1D;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-}
-
-/* 🔹 Dropdown nyitott állapot */
-.dropdown-content.show {
-    display: block;
-}
-
-/* 🔹 Nyíl lefelé vagy felfelé vált */
-.language-dropdown button.open .dropdown-arrow {
-    transform: rotate(180deg);
-}
-
-/* 🔹 Dropdown tartalma (zászlók) */
-.dropdown-content img {
-    display: block;
-    width: 32px;
-    height: auto;
-    margin: 5px 0;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-/* 🔹 Hover effekt a zászlókra */
-.dropdown-content img:hover {
-    transform: scale(1.1);
-}
-
-
-
-
 /***************************** 🔹 Reszponzivitás ***********/
 @media (max-width: 768px) {
     .top-header {
@@ -165,6 +126,18 @@
     }
 
     .auth-section {
+        position: static;
+        justify-content: center;
         margin-top: 10px;
+    }
+
+    .language-dropdown {
+        position: static;
+        margin-top: 10px;
+    }
+
+    .menu-list {
+        flex-direction: column;
+        gap: 10px;
     }
 }
